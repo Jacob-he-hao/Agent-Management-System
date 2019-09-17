@@ -27,7 +27,7 @@ public class Calculator {
         scanner.nextLine();
     }
 
-    public static List<Agent> Agents() {
+    public static List<Agent> agents() {
         List<Agent> agents = new ArrayList<>();
         Agent agent1 = new Agent("Lapland", "Guard", 5);
         Agent agent2 = new Agent("Lava", "Caster", 3);
@@ -43,19 +43,19 @@ public class Calculator {
     }
 
 
-    public static boolean pickAgent(){
-        return num <=Agent.getStar();
+    public static boolean pickAgent() {
+        return num <= Agent.getStar();
 
     }
 
     public static void  main(String[] args) {
-        Calculator Calculator=new Calculator();
-        Calculator.processLoggings();
-        List<Agent> agentName = Agents();
+        Calculator calculator = new Calculator();
+        calculator.processLoggings();
+        List<Agent> agentName = agents();
         for (int j = 0; j < agentName.size(); j++) {
-            if(pickAgent()) {
+            if (pickAgent()) {
                 System.out.println(agentName.get(j));
-            };
+            }
             System.out.println("");
 
         }
