@@ -24,7 +24,7 @@ public class Calculator {
         System.out.println("Please select an number (from 1 to 6):");
         num = Integer.parseInt(scanner.nextLine());
         System.out.println("you selected: " + num);
-        //scanner.nextLine();
+        scanner.nextLine();
     }
 
     public static List<Agent> Agents() {
@@ -44,7 +44,7 @@ public class Calculator {
 
 
     public static boolean pickAgent(){
-        return num >=Agent.getStar();
+        return num <=Agent.getStar();
 
     }
 
@@ -52,7 +52,7 @@ public class Calculator {
         Calculator Calculator=new Calculator();
         Calculator.processLoggings();
         List<Agent> agentName = Agents();
-        for (int j = 0; j <= agentName.size(); j++) {
+        for (int j = 0; j < agentName.size(); j++) {
             if(pickAgent()) {
                 System.out.println(agentName.get(j));
             };
