@@ -1,10 +1,12 @@
-package Model;
+package model;
+
+import model.Agent;
 
 import java.util.ArrayList;
 import java.util.List;
 
 // Represents a list of agents
-public class Agentlist{
+public class Agentlist {
 
     private List<Agent> data;
 
@@ -17,8 +19,9 @@ public class Agentlist{
     // EFFECTS: Agent i is added to the Agent list if it's not
     // already in the list
     public void insert(Agent i) {
-        if (!contains(i))
+        if (!contains(i)) {
             data.add(i);
+        }
     }
 
     // REQUIRES: Agent i is an element of the Agentlist
