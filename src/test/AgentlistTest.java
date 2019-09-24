@@ -1,4 +1,4 @@
-import Model.Agent;
+import model.Agent;
 import Model.Agentlist;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

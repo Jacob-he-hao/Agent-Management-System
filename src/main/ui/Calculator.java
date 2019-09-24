@@ -2,7 +2,7 @@ package ui;
 
 
 
-import Model.Agent;
+import model.Agent;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;

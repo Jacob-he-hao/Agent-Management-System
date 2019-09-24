@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 //Represents an agent
 public class Agent {
