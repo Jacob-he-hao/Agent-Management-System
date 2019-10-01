@@ -3,6 +3,8 @@ import model.Agentlist;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -14,7 +16,7 @@ public class AgentlistTest {
     private static Agent i2 = new Agent("Kyle", "Guard", 2);
     private static Agent i3 = new Agent("Exsial", "Defender", 5);
     @BeforeEach
-    public void runBefore() {
+    public void runBefore() throws IOException {
         set = new Agentlist();
     }
 

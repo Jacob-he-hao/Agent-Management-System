@@ -1,0 +1,4 @@
+"Lapland", "Guard", 4;
+"Lava", "Guard", 3;
+"Exusiai", "Guard", 5
+"Saria", "Guard", 6;
