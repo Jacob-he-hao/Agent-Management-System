@@ -1,6 +1,5 @@
 package model;
 
-import model.Agent;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,7 +12,6 @@ import java.util.Scanner;
 
 // Represents a list of agents
 public class Agentlist implements Savable,Loadable {
-    private Scanner scanner;
     private List<Agent> data;
     private List<Agent> availableagents;
     private List<Agent> recruitedAgents;
@@ -26,7 +24,9 @@ public class Agentlist implements Savable,Loadable {
         PrintWriter writer = new PrintWriter("outputfile.txt", "UTF-8");
         for (String line : lines) {
             ArrayList<String> partsOfLine = splitOnSpace(line);
-            availableagents.add(new Agent(partsOfLine.get(0), partsOfLine.get(1),
+            availableagents.add(new HighRankingAgent(partsOfLine.get(0), partsOfLine.get(1),
+                    Integer.parseInt(partsOfLine.get(2))));
+            availableagents.add(new NormalAgent(partsOfLine.get(0), partsOfLine.get(1),
                     Integer.parseInt(partsOfLine.get(2))));
             writer.println(line);
         }
@@ -52,32 +52,19 @@ public class Agentlist implements Savable,Loadable {
 
     //MODIFIES: this
     //EFFECTS: return true if the operation list have the agent with name in it
-    public boolean containAgent(String name, String operation) {
+    public boolean containAgent(String name) {
         boolean b = false;
-        if (operation.equals("Recruited Agents")) {
-            for (Agent recruitedagent : recruitedAgents) {
-                if (recruitedagent.getName().equals(name)) {
-                    b = true;
-                    break;
-                }
-            }
-        } else if (operation.equals("Available agents")) {
-            for (Agent availableagent : availableagents) {
-                if (availableagent.getName().equals(name)) {
-                    b = true;
-                    break;
-                }
+        for (Agent availableagent : availableagents) {
+            if (availableagent.getName().equals(name)) {
+                b = true;
+                break;
             }
         }
         return b;
     }
 
 
-    public void renderAddAgent() throws IOException {
-        System.out.print("Please enter the job of the agent you want to render: ");
-        String job = scanner.nextLine();
-        System.out.print("Please enter the star of the agent you want to render: ");
-        Integer star = Integer.valueOf(scanner.nextLine());
+    public void renderAddAgent(String job, Integer star) throws IOException {
         for (Agent availableagent : availableagents) {
             if (availableagent.getJob().equals(job)) {
                 if (availableagent.getStar() >= star) {
@@ -97,10 +84,8 @@ public class Agentlist implements Savable,Loadable {
 
     //MODIFIES: this
     //EFFECTS: add the agent into recruitment list
-    public void addAgent() throws IOException {
-        System.out.print("Please enter the name of the agent you want to add: ");
-        String name = scanner.nextLine();
-        if (containAgent(name,"Available agents")) {
+    public void addAgent(String name) throws IOException {
+        if (containAgent(name)) {
             recruitedAgents.add(getAgent(name, "Available agents"));
             save();
             System.out.println("The agent has been added to your recruitment list!");
@@ -115,10 +100,8 @@ public class Agentlist implements Savable,Loadable {
 
     //MODIFIES: this
     //EFFECTS: return the information of the agent searched
-    public void searchAgent() {
-        System.out.print("Please enter the name of the agent you want to search: ");
-        String name = scanner.nextLine();
-        if (containAgent(name,"Available agents")) {
+    public void searchAgent(String name) {
+        if (containAgent(name)) {
             Agent a1 = getAgent(name,"Available agents");
             System.out.println("Agent Name: " + a1.getName()
                     + "Job: " + a1.getJob()
@@ -164,11 +147,11 @@ public class Agentlist implements Savable,Loadable {
     }
 
 
-    void add(Agent otheragent) {
+    public void add(Agent otheragent) {
         availableagents.add(otheragent);
     }
 
-    Agent get(int n) {
+    public Agent get(int n) {
         return availableagents.get(n);
     }
 

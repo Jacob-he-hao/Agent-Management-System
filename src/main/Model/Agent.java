@@ -1,7 +1,7 @@
 package model;
 
 //Represents an agent
-public class Agent {
+public abstract class Agent {
     private int star;
     private String name;
     private String job;
@@ -13,7 +13,6 @@ public class Agent {
         this.job = job;
         this.star = star;
     }
-
 
 
     public String getName() {
@@ -31,8 +30,12 @@ public class Agent {
     // Determines if the agent have met the requirements of star rankings
     // EFFECTS:  Return true if the agent has higher or the same star ranking than the criteria,
     //           false otherwise
+
     public boolean qualified(Agent i, Integer num) {
-        return (i.getStar() >= num);
+        if (i.getStar() < num) {
+            return false;
+        }
+        return true;
     }
 
     //Get the qualified agent's name

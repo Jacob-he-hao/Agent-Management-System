@@ -1,4 +1,6 @@
 import model.Agent;
+import model.HighRankingAgent;
+import model.NormalAgent;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -12,14 +14,17 @@ public class AgentTest {
     private static String job ;
     private static String name ;
     private Agent agent;
+    private Agent hiagent;
     private static int num;
     private Agent i1;
     private Agent i2;
     private Agent i3;
     @BeforeEach
     void runBefore() {
-        agent = new Agent(name, job, star);
+        agent = new NormalAgent(name, job, star);
+        hiagent = new HighRankingAgent(name, job, star);
     }
+
 
     @Test
     void testGetName() {
@@ -40,9 +45,9 @@ public class AgentTest {
     @Test
     void testQualified(){
         num = 4;
-        i1= new Agent(name, job, 3);
-        i2= new Agent(name, job, 4);
-        i3= new Agent(name, job, 5);
+        i1= new NormalAgent(name, job, 3);
+        i2= new NormalAgent(name, job, 4);
+        i3= new NormalAgent(name, job, 5);
         assertFalse(agent.qualified(i1 ,num));
         assertTrue(agent.qualified(i2 ,num));
         assertTrue(agent.qualified(i3 ,num));
@@ -50,11 +55,11 @@ public class AgentTest {
     @Test
     void testPickqualified(){
         num =4;
-        i1= new Agent("Lapland", "Vanguard", 4);
-        i2= new Agent("Chen", "Guard", 3);
-        i3= new Agent("Exsail", "Defender", 6);
+        i1= new NormalAgent("Lapland", "Vanguard", 4);
+        i2= new NormalAgent("Chen", "Guard", 3);
+        i3= new HighRankingAgent("Exsail", "Defender", 6);
         assertEquals("Lapland", agent.pickQualified(i1, num));
-        assertEquals("None",  agent.pickQualified(i2, num));
+        assertEquals(null,  agent.pickQualified(i2, num));
         assertEquals("Exsail", agent.pickQualified(i3, num));
 
     }
