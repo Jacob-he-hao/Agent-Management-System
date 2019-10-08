@@ -1,6 +1,1 @@
-Karry Vanguard 4
-Dora Sniper 6
-Lapland Guard 5
-Exsial Sniper 6
-Lava Guard 3
-
+Lapland Guard 5 

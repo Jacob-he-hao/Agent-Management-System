@@ -22,14 +22,14 @@ public class AgentlistTest {
     private static Agent i3 = new NormalAgent("Exsial", "Defender", 5);
 
     @BeforeEach
-    public void runBefore() throws IOException {
+     void runBefore() throws IOException {
         set = new Agentlist();
         set1 = new Agentlist();
 
     }
 
     @Test
-    public void testLoad() throws IOException {
+     void testLoad() throws IOException {
         File file = new File("inputfile.txt");
         List<String> lines = new ArrayList<>();
         lines.add("Save Guard 6");
@@ -42,7 +42,7 @@ public class AgentlistTest {
     }
 
     @Test
-    public void testSave() throws IOException{
+     void testSave() throws IOException{
         File file = new File("Recruitment list.txt");
         Agent agent1 = new NormalAgent("Karry", "Vanguard" , 4);
         Agent agent2 = new TopAgent("Dora", "Sniper" , 6);
@@ -55,7 +55,7 @@ public class AgentlistTest {
     }
 
     @Test
-    public void testContainAgent() {
+     void testContainAgent() {
         set.add(i1);
         set.add(i2);
         set.add(i3);
@@ -66,7 +66,7 @@ public class AgentlistTest {
 
 
     @Test
-    public void testSize() {
+     void testSize() {
         assertEquals(0, set.size());
         set.insert(i1);
         assertEquals(1, set.size());
@@ -75,14 +75,14 @@ public class AgentlistTest {
     }
 
     @Test
-    public void testContains() {
+     void testContains() {
         set.insert(i1);
         assertTrue(set.contains(i1));
         assertEquals(1, set.size());
     }
 
     @Test
-    public void testInsert() {
+    void testInsert() {
         set.insert(i1);
         assertTrue(set.contains(i1));
         assertEquals(1, set.size());
@@ -98,7 +98,7 @@ public class AgentlistTest {
 
 
     @Test
-    public void testRemove() {
+     void testRemove() {
         set.insert(i1);
         set.remove(i1);
         assertFalse(set.contains(i1));
