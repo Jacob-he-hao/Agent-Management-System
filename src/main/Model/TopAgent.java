@@ -1,8 +1,7 @@
 package model;
 
-
-public class HighRankingAgent extends Agent {
-    public HighRankingAgent(String name, String job, int star) {
+public class TopAgent extends Agent {
+    public TopAgent(String name, String job, int star) {
         super(name, job, star);
     }
 

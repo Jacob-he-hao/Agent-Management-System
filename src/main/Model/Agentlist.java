@@ -8,7 +8,6 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Scanner;
 
 // Represents a list of agents
 public class Agentlist implements Savable,Loadable {
@@ -24,7 +23,7 @@ public class Agentlist implements Savable,Loadable {
         PrintWriter writer = new PrintWriter("outputfile.txt", "UTF-8");
         for (String line : lines) {
             ArrayList<String> partsOfLine = splitOnSpace(line);
-            availableagents.add(new HighRankingAgent(partsOfLine.get(0), partsOfLine.get(1),
+            availableagents.add(new TopAgent(partsOfLine.get(0), partsOfLine.get(1),
                     Integer.parseInt(partsOfLine.get(2))));
             availableagents.add(new NormalAgent(partsOfLine.get(0), partsOfLine.get(1),
                     Integer.parseInt(partsOfLine.get(2))));
