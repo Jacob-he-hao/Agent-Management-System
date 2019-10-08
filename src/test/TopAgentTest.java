@@ -1,11 +1,11 @@
 import model.Agent;
-import model.HighRankingAgent;
+import model.TopAgent;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class HighRankingAgentTest {
+public class TopAgentTest {
     private static int star;
     private static String job;
     private static String name;
@@ -18,14 +18,14 @@ public class HighRankingAgentTest {
 
     @BeforeEach
     void runBefore() {
-        hiagent = new HighRankingAgent(name, job, star);
+        hiagent = new TopAgent(name, job, star);
     }
 
     @Test
     void testQualified() {
         num = 4;
-        i1 = new HighRankingAgent(name, job, 6);
-        i2 = new HighRankingAgent(name, job, 6);
+        i1 = new TopAgent(name, job, 6);
+        i2 = new TopAgent(name, job, 6);
         assertTrue(hiagent.qualified(i1, num));
         assertTrue(hiagent.qualified(i2, num));
     }

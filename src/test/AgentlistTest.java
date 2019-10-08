@@ -1,6 +1,6 @@
 import model.Agent;
 import model.Agentlist;
-import model.HighRankingAgent;
+import model.TopAgent;
 import model.NormalAgent;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -45,7 +45,7 @@ public class AgentlistTest {
     public void testSave() throws IOException{
         File file = new File("Recruitment list.txt");
         Agent agent1 = new NormalAgent("Karry", "Vanguard" , 4);
-        Agent agent2 = new HighRankingAgent("Dora", "Sniper" , 6);
+        Agent agent2 = new TopAgent("Dora", "Sniper" , 6);
         set.add(agent1);
         set.add(agent2);
         set.save(file);

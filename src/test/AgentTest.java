@@ -1,5 +1,5 @@
 import model.Agent;
-import model.HighRankingAgent;
+import model.TopAgent;
 import model.NormalAgent;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -22,7 +22,7 @@ public class AgentTest {
     @BeforeEach
     void runBefore() {
         agent = new NormalAgent(name, job, star);
-        hiagent = new HighRankingAgent(name, job, star);
+        hiagent = new TopAgent(name, job, star);
     }
 
 
@@ -57,7 +57,7 @@ public class AgentTest {
         num =4;
         i1= new NormalAgent("Lapland", "Vanguard", 4);
         i2= new NormalAgent("Chen", "Guard", 3);
-        i3= new HighRankingAgent("Exsail", "Defender", 6);
+        i3= new TopAgent("Exsail", "Defender", 6);
         assertEquals("Lapland", agent.pickQualified(i1, num));
         assertEquals(null,  agent.pickQualified(i2, num));
         assertEquals("Exsail", agent.pickQualified(i3, num));
