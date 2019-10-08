@@ -34,6 +34,8 @@ public class Calculator {
                     Integer star1 = Integer.valueOf(scanner.nextLine());
                     af1.renderAddAgent(job1, star1);
                     break;
+                default:
+                    throw new IllegalStateException("Unexpected value: " + y);
             }
         }
     }
