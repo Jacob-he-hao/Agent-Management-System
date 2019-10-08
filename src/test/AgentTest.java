@@ -34,20 +34,21 @@ public class AgentTest {
 
     @Test
     void testGetStar() {
-
-        assertEquals(star, agent.getStar());
+        agent =new NormalAgent("KJ", "Guard", 5);
+        assertEquals(5, agent.getStar());
     }
 
     @Test
     void testGetJob() {
-        assertEquals(job, agent.getJob());
+        agent =new NormalAgent("KJ", "Guard", 5);
+        assertEquals("Guard", agent.getJob());
     }
     @Test
     void testQualified(){
         num = 4;
-        i1= new NormalAgent(name, job, 3);
-        i2= new NormalAgent(name, job, 4);
-        i3= new NormalAgent(name, job, 5);
+        i1= new NormalAgent("KJ", "Guard", 3);
+        i2= new NormalAgent("WE", "Guard", 4);
+        i3= new NormalAgent("TP", "Vanguard", 5);
         assertFalse(agent.qualified(i1 ,num));
         assertTrue(agent.qualified(i2 ,num));
         assertTrue(agent.qualified(i3 ,num));

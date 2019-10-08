@@ -72,6 +72,8 @@ public class AgentlistTest {
         assertEquals(1, set.size());
         set.insert(i2);
         assertEquals(2, set.size());
+        set.insert(i2);
+        assertEquals(2, set.size());
     }
 
     @Test
@@ -79,6 +81,11 @@ public class AgentlistTest {
         set.insert(i1);
         assertTrue(set.contains(i1));
         assertEquals(1, set.size());
+        set.insert(i2);
+        assertTrue(set.contains(i2));
+        assertEquals(2, set.size());
+        assertTrue(set.contains(i2));
+        assertEquals(2, set.size());
     }
 
     @Test
@@ -105,8 +112,11 @@ public class AgentlistTest {
         assertEquals(0, set.size());
         set.insert(i1);
         set.insert(i2);
-        set.remove(i1);
         set.remove(i2);
+        assertTrue(set.contains(i1));
+        assertFalse(set.contains(i2));
+        assertEquals(1, set.size());
+        set.remove(i1);
         assertFalse(set.contains(i1));
         assertFalse(set.contains(i2));
         assertEquals(0, set.size());
