@@ -65,11 +65,12 @@ public class Agentlist implements Savable,Loadable {
 
 
     public void renderAddAgent(String job, Integer star) throws IOException {
+        File file = new File("Recruitment list.txt");
         for (Agent availableagent : availableagents) {
             if (availableagent.getJob().equals(job)) {
                 if (availableagent.getStar() >= star) {
                     recruitedAgents.add(availableagent);
-                    save();
+                    save(file);
                     System.out.println("The agent has been added to your recruitment list!");
                 } else {
                     System.out.println("Sorry this agent is not available.");
@@ -85,9 +86,10 @@ public class Agentlist implements Savable,Loadable {
     //MODIFIES: this
     //EFFECTS: add the agent into recruitment list
     public void addAgent(String name) throws IOException {
+        File file = new File("Recruitment list.txt");
         if (containAgent(name)) {
             recruitedAgents.add(getAgent(name, "Available agents"));
-            save();
+            save(file);
             System.out.println("The agent has been added to your recruitment list!");
         } else {
             System.out.println("Sorry this agent is not available.");
@@ -137,12 +139,12 @@ public class Agentlist implements Savable,Loadable {
     @Override
     //MODIFIES: this and file
     //EFFECTS: save the course into the file
-    public void save() throws IOException {
+    public void save(File f) throws IOException {
         File file = new File("Recruitment list.txt");
         List<String> lines = new ArrayList<>();
         for (Agent a2 : recruitedAgents) {
             lines.add(a2.getName() + " " + a2.getJob() + " " + a2.getStar() + " ");
-            Files.write(file.toPath(), lines);
+            Files.write(f.toPath(), lines);
         }
     }
 

@@ -1,5 +1,6 @@
 import model.Agent;
 import model.Agentlist;
+import model.HighRankingAgent;
 import model.NormalAgent;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -42,14 +43,15 @@ public class AgentlistTest {
 
     @Test
     public void testSave() throws IOException{
-        Agent agent1 = new NormalAgent("Kype", "Vanguard" , 4);
-        set.add(agent1);
-        //set.addtoload(agent1);
-        set.save();
         File file = new File("Recruitment list.txt");
+        Agent agent1 = new NormalAgent("Karry", "Vanguard" , 4);
+        Agent agent2 = new HighRankingAgent("Dora", "Sniper" , 6);
+        set.add(agent1);
+        set.add(agent2);
+        set.save(file);
         assertTrue(file.exists());
         List<String> lines = Files.readAllLines(file.toPath());
-        assertEquals("Save" , set.get(0).getName() );
+        assertEquals("Karry Vanguard 4" , lines.get(0));
     }
 
     @Test
@@ -61,33 +63,6 @@ public class AgentlistTest {
         assertTrue(set.containAgent("Kyle"));
         assertFalse(set.containAgent("Texas"));
     }
-
-    @Test
-    public void testRenderAddAgent() throws IOException {
-        File file = new File("inputfile.txt");
-        List<String> lines = new ArrayList<>();
-        lines.add("Save Guard 6");
-        lines.add("Kype Vanguard 4");
-        Files.write(file.toPath(), lines);
-        set.load();
-        set.renderAddAgent("Guard", 5);
-        assertEquals ("Save", set1.get(0).getName());
-        assertEquals ("Guard", set1.get(0).getJob());
-        assertEquals (6, set1.get(0).getStar());
-        assertEquals(lines.get(0),"Exsial Defender 5" );
-    }
-
-    @Test
-    public void testSearchAgent() throws IOException {
-        set.add(i1);
-        set.add(i2);
-        set.add(i3);
-        set.searchAgent("Lapland");
-        File file = new File("Recruitment list.txt");
-        List<String> lines = Files.readAllLines(file.toPath());
-        assertEquals(lines.get(0),"Exsial Defender 5" );
-    }
-
 
 
     @Test

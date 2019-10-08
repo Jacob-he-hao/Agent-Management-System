@@ -1,6 +1,5 @@
 import model.Agent;
 import model.HighRankingAgent;
-import model.NormalAgent;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -14,7 +13,7 @@ public class HighRankingAgentTest {
     private static int num;
     private Agent i1;
     private Agent i2;
-    private Agent i3;
+
 
 
     @BeforeEach
