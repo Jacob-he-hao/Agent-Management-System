@@ -4,69 +4,66 @@ import model.NormalAgent;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.awt.font.TextLayout;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 public class AgentTest {
-    private static int star;
-    private static String job ;
-    private static String name ;
     private Agent agent;
+    private Agent agent2;
+    private Agent agent1;
     private Agent hiagent;
     private static int num;
-    private Agent i1;
-    private Agent i2;
-    private Agent i3;
     @BeforeEach
     void runBefore() {
-        agent = new NormalAgent(name, job, star);
-        hiagent = new TopAgent(name, job, star);
+        agent = new NormalAgent("k", "Guard", 4);
+        agent1 = new NormalAgent("h", "Vanguard", 5);
+        agent2 = new NormalAgent("w", "Guard", 3);
+        hiagent = new TopAgent("j", "Vanguard", 6);
     }
 
 
     @Test
     void testGetName() {
-        assertEquals(name, agent.getName());
+        assertEquals("k", agent.getName());
     }
 
-
-    @Test
-    void testGetStar() {
-        agent =new NormalAgent("KJ", "Guard", 5);
-        assertEquals(5, agent.getStar());
-    }
 
     @Test
     void testGetJob() {
-        agent =new NormalAgent("KJ", "Guard", 5);
         assertEquals("Guard", agent.getJob());
     }
-    @Test
-    void testQualified(){
-        num = 4;
-        i1= new NormalAgent("KJ", "Guard", 3);
-        i2= new NormalAgent("WE", "Guard", 4);
-        i3= new NormalAgent("TP", "Vanguard", 5);
-        assertFalse(agent.qualified(i1 ,num));
-        assertTrue(agent.qualified(i2 ,num));
-        assertTrue(agent.qualified(i3 ,num));
-    }
-    @Test
-    void testPickqualified(){
-        num =4;
-        i1= new NormalAgent("Lapland", "Vanguard", 4);
-        i2= new NormalAgent("Chen", "Guard", 3);
-        i3= new TopAgent("Exsail", "Defender", 6);
-        assertEquals("Lapland", agent.pickQualified(i1, num));
-        assertEquals(null,  agent.pickQualified(i2, num));
-        assertEquals("Exsail", agent.pickQualified(i3, num));
 
+    @Test
+    void testGetStar() {
+        assertEquals( 4, agent.getStar());
+        assertEquals( 5, agent1.getStar());
+        assertEquals( 3, agent2.getStar());
+        assertEquals(6, hiagent.getStar());
     }
 
+    @Test
+    void testGetNormalInfo() throws Exception{
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+        agent1.getInfo();
+        String expectedOutput="This is a normal agent\r\n";
+        assertEquals(expectedOutput, outContent.toString());
+    }
 
-
+    @Test
+    void testGetTopInfo() throws Exception{
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+        hiagent.getInfo();
+        String anotherOutput="This is a top agent\r\n";
+        assertEquals(anotherOutput, outContent.toString());
+    }
 
 
 

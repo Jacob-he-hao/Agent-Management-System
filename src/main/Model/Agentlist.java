@@ -107,6 +107,7 @@ public class Agentlist implements Savable,Loadable {
             System.out.println("Agent Name: " + a1.getName()
                     + "Job: " + a1.getJob()
                     + "Star: " + a1.getStar());
+            a1.getInfo();
         } else {
             System.out.println("Sorry this agent is not available.");
         }

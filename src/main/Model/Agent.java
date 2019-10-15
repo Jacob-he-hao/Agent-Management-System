@@ -5,6 +5,7 @@ public abstract class Agent {
     private int star;
     private String name;
     private String job;
+    private Agent agent;
 
     //Construct an agent
     //EFFECTS: agent with name, string and star
@@ -27,25 +28,8 @@ public abstract class Agent {
         return star;
     }
 
-    // Determines if the agent have met the requirements of star rankings
-    // EFFECTS:  Return true if the agent has higher or the same star ranking than the criteria,
-    //           false otherwise
+    public abstract void getInfo();
 
-    public boolean qualified(Agent i, Integer num) {
-        if (i.getStar() < num) {
-            return false;
-        }
-        return true;
-    }
-
-    //Get the qualified agent's name
-    //EFFECTS: Return the name of the qualified agent, "None" for unqualified agent
-    public String pickQualified(Agent i, Integer num) {
-        if (qualified(i, num)) {
-            return i.getName();
-        }
-        return null;
-    }
 }
 
 
