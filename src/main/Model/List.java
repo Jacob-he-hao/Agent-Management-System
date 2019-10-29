@@ -1,13 +1,22 @@
 package model;
 
-public interface List {
-    void add(Agent agent);
+import java.io.File;
+import java.io.IOException;
 
-    void remove(Agent agent);
+public interface List<A> {
+    void add(A a);
 
-    boolean contains(Agent agent);
+    void remove(A a);
+
+    boolean contains(A a);
 
     int size();
 
-    Agent get(int n);
+    A get(int i);
+
+    void save(File file) throws IOException;
+
+    void load(File file) throws IOException;
+
+
 }

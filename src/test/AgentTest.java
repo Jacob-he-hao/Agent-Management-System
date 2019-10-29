@@ -1,7 +1,5 @@
 import exception.ImpossibleAgentException;
-import model.Agent;
-import model.RhineLifeAgent;
-import model.RhodeIslandAgent;
+import model.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -18,13 +16,19 @@ public class AgentTest {
     private Agent agent2;
     private Agent agent1;
     private Agent agent3;
-    private static int num;
+    private Tag tag;
+    private Taglist tl;
+    private Agentlist al;
     @BeforeEach
     void runBefore() {
         agent = new RhineLifeAgent("k", "Guard", 4);
         agent1 = new RhineLifeAgent("h", "Vanguard", 5);
         agent2 = new RhodeIslandAgent("w", "Guard", 3);
         agent3 = new RhodeIslandAgent("j", "Vanguard", 6);
+        al = new Agentlist();
+        tag = new Tag("support", al);
+        tl = new Taglist();
+        agent1.addTag(tag);
     }
 
 
@@ -67,6 +71,19 @@ public class AgentTest {
         assertEquals(anotherOutput, outContent.toString());
     }
 
+
+    @Test
+    void addAndRemoveTagTest() {
+        assertFalse(agent.getTagList().contains(tag));
+        agent.addTag(tag);
+        assertTrue(agent.getTagList().contains(tag));
+        agent.addTag(tag);
+        assertTrue(agent.getTagList().contains(tag));
+        agent.removeTag(tag);
+        assertFalse(agent.getTagList().contains(tag));
+        agent.removeTag(tag);
+        assertFalse(agent.getTagList().contains(tag));
+    }
 
 
 }

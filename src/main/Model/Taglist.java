@@ -7,37 +7,31 @@ import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-// Represents a list of agents
-public class Agentlist implements List<Agent> {
-    private Agent agent;
-    private ArrayList<Agent> list;
+public class Taglist implements List<Tag> {
 
-    public Agentlist() {
+    private ArrayList<Tag> list;
+
+    public Taglist() {
         list = new ArrayList<>();
     }
 
     // MODIFIES: this
     // EFFECTS: Agent i is added to the Agent list
-    public void add(Agent agent) {
-        list.add(agent);
+    public void add(Tag tag) {
+        list.add(tag);
     }
 
-    public Agent get(int n) {
+    @Override
+    public Tag get(int n) {
         return list.get(n);
     }
 
-
-    // REQUIRES: Agent i is an element of the Agentlist
-    // MODIFIES: this
-    // EFFECTS: Agent i is removed from the Agentlist
-    public void remove(Agent i) {
-        list.remove(i);
+    public void remove(Tag tag) {
+        list.remove(tag);
     }
 
-    // EFFECTS: Returns true if Integer i is in the IntegerSet
-    // and false otherwise
-    public boolean contains(Agent i) {
-        return list.contains(i);
+    public boolean contains(Tag tag) {
+        return list.contains(tag);
     }
 
     // EFFECTS: Returns the number of items in the set
@@ -50,8 +44,8 @@ public class Agentlist implements List<Agent> {
     //EFFECTS: save the course into the file
     public void save(File file) throws IOException {
         java.util.List<String> lines = new ArrayList<>();
-        for (Agent a2 : list) {
-            lines.add(a2.getName() + " " + a2.getJob() + " " + a2.getStar());
+        for (Tag t1 : list) {
+            lines.add(t1.getName());
             Files.write(file.toPath(), lines);
         }
     }
@@ -64,8 +58,7 @@ public class Agentlist implements List<Agent> {
         PrintWriter writer = new PrintWriter("data/outputfile.txt", "UTF-8");
         for (String line : lines) {
             ArrayList<String> partsOfLine = splitOnSpace(line);
-            list.add(new RhineLifeAgent(partsOfLine.get(0), partsOfLine.get(1),
-                    Integer.parseInt(partsOfLine.get(2))));
+            list.add(new Tag(partsOfLine.get(0), new Agentlist()));
             writer.println(line);
         }
         writer.close(); //note -- if you miss this, the file will not be written at all.
@@ -80,17 +73,12 @@ public class Agentlist implements List<Agent> {
 
     //MODIFIES: this
     //EFFECTS: return the agent with given name in the given list
-    public  Agent getAgent(String name) {
-        for (Agent a : list) {
-            if (a.getName().equals(name)) {
-                return a;
+    public  Tag getTag(String name) {
+        for (Tag t : list) {
+            if (t.getName().equals(name)) {
+                return t;
             }
         }
-        return null;
+        return new Tag(name, new Agentlist());
     }
-
-
 }
-
-
-

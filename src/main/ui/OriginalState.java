@@ -48,6 +48,10 @@ public class OriginalState {
                 }
                 break;
 
+            case "Print":
+                op.printTheMap();
+                break;
+
             default:
                 throw new NoSuchOperationException();
 

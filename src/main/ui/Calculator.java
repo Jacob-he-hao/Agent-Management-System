@@ -16,16 +16,14 @@ public class Calculator {
     //Effects: construct a calculator with an empty scanner
     private Calculator() throws IOException, NoSuchOperationException {
         scanner = new Scanner(System.in);
-        System.out.println("Add or Search  or Over?");
+        System.out.println("Add or Search  or Print or Over?");
         while (true) {
             String operation;
             operation = scanner.nextLine();
-            if (operation.equals("Over")) {
-                break;
-            } else {
+            if (!operation.equals("Over")) {
                 try {
                     new OriginalState(operation);
-                } catch (NotGoingOnException notGoingOnException) {
+                } catch (NoSuchOperationException e) {
                     System.out.println("Not available function");
                 } finally {
                     System.out.println("The next operation?");
@@ -34,7 +32,6 @@ public class Calculator {
 
         }
     }
-
 
     public static void main(String[] args) throws IOException, NoSuchOperationException {
         new Calculator();

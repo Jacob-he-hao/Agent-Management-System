@@ -1,10 +1,13 @@
 package model;
 
+import java.util.Objects;
+
 //Represents an agent
 public abstract class Agent {
     private int star;
     private String name;
     private String job;
+    private Taglist tagList;
 
 
     //Construct an agent
@@ -13,6 +16,28 @@ public abstract class Agent {
         this.name = name;
         this.job = job;
         this.star = star;
+        this.tagList = new Taglist();
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Agent agent = (Agent) o;
+        return star == agent.star
+                && name.equals(agent.name)
+                && job.equals(agent.job)
+                && tagList.equals(agent.tagList);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, job, star, tagList);
     }
 
 
@@ -28,9 +53,33 @@ public abstract class Agent {
         return star;
     }
 
+    public Taglist getTagList() {
+        return tagList;
+    }
+
     public abstract void getOrganization();
 
+
+    public void addTag(Tag tag) {
+        if (!tagList.contains(tag)) {
+            tagList.add(tag);
+            tag.addAgent(this);
+        }
+    }
+
+    public void removeTag(Tag tag) {
+        if (tagList.contains(tag)) {
+            tagList.remove(tag);
+            tag.removeAgent(this);
+        }
+    }
+
+    public String toString() {
+        return name + "-" + job + "-" + star;
+    }
 }
+
+
 
 
 
