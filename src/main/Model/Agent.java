@@ -5,7 +5,7 @@ public abstract class Agent {
     private int star;
     private String name;
     private String job;
-    private Agent agent;
+
 
     //Construct an agent
     //EFFECTS: agent with name, string and star
@@ -28,7 +28,7 @@ public abstract class Agent {
         return star;
     }
 
-    public abstract void getInfo();
+    public abstract void getOrganization();
 
 }
 

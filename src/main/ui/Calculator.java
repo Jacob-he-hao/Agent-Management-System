@@ -2,6 +2,10 @@ package ui;
 
 
 import java.io.IOException;
+
+import exception.ImpossibleAgentException;
+import exception.NoSuchOperationException;
+import exception.NotGoingOnException;
 import model.Agentlist;
 import java.util.Scanner;
 
@@ -10,38 +14,29 @@ public class Calculator {
     private Scanner scanner;
 
     //Effects: construct a calculator with an empty scanner
-    private Calculator() throws IOException {
+    private Calculator() throws IOException, NoSuchOperationException {
         scanner = new Scanner(System.in);
-        Agentlist af1 = new Agentlist();
-        System.out.println("Add or Search or Renderadd?");
+        System.out.println("Add or Search  or Over?");
         while (true) {
-            String y = scanner.nextLine();
-            switch (y) {
-                case "Add":
-                    System.out.print("Please enter the name of the agent you want to add: ");
-                    String name = scanner.nextLine();
-                    af1.addAgent(name);
-                    break;
-                case "Search":
-                    System.out.print("Please enter the name of the agent you want to search: ");
-                    String name1 = scanner.nextLine();
-                    af1.searchAgent(name1);
-                    break;
-                case "Renderadd":
-                    System.out.print("Please enter the job of the agent you want to render: ");
-                    String job1 = scanner.nextLine();
-                    System.out.print("Please enter the star of the agent you want to render: ");
-                    Integer star1 = Integer.valueOf(scanner.nextLine());
-                    af1.renderAddAgent(job1, star1);
-                    break;
-                default:
-                    throw new IllegalStateException("Unexpected value: " + y);
+            String operation;
+            operation = scanner.nextLine();
+            if (operation.equals("Over")) {
+                break;
+            } else {
+                try {
+                    new OriginalState(operation);
+                } catch (NotGoingOnException notGoingOnException) {
+                    System.out.println("Not available function");
+                } finally {
+                    System.out.println("The next operation?");
+                }
             }
+
         }
     }
 
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, NoSuchOperationException {
         new Calculator();
     }
 }

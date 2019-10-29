@@ -1,10 +1,10 @@
+import exception.ImpossibleAgentException;
 import model.Agent;
-import model.TopAgent;
-import model.NormalAgent;
+import model.RhineLifeAgent;
+import model.RhodeIslandAgent;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.awt.font.TextLayout;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
@@ -17,26 +17,28 @@ public class AgentTest {
     private Agent agent;
     private Agent agent2;
     private Agent agent1;
-    private Agent hiagent;
+    private Agent agent3;
     private static int num;
     @BeforeEach
     void runBefore() {
-        agent = new NormalAgent("k", "Guard", 4);
-        agent1 = new NormalAgent("h", "Vanguard", 5);
-        agent2 = new NormalAgent("w", "Guard", 3);
-        hiagent = new TopAgent("j", "Vanguard", 6);
+        agent = new RhineLifeAgent("k", "Guard", 4);
+        agent1 = new RhineLifeAgent("h", "Vanguard", 5);
+        agent2 = new RhodeIslandAgent("w", "Guard", 3);
+        agent3 = new RhodeIslandAgent("j", "Vanguard", 6);
     }
 
 
     @Test
     void testGetName() {
         assertEquals("k", agent.getName());
+        assertEquals("j", agent3.getName());
     }
 
 
     @Test
     void testGetJob() {
         assertEquals("Guard", agent.getJob());
+        assertEquals("Vanguard", agent3.getJob());
     }
 
     @Test
@@ -44,24 +46,24 @@ public class AgentTest {
         assertEquals( 4, agent.getStar());
         assertEquals( 5, agent1.getStar());
         assertEquals( 3, agent2.getStar());
-        assertEquals(6, hiagent.getStar());
+        assertEquals(6, agent3.getStar());
     }
 
     @Test
-    void testGetNormalInfo() throws Exception{
+    void testGetRhineLifeOrganization()  {
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
-        agent1.getInfo();
-        String expectedOutput="This is a normal agent\r\n";
+        agent1.getOrganization();
+        String expectedOutput="This is an agent from Rhine Life.\r\n";
         assertEquals(expectedOutput, outContent.toString());
     }
 
     @Test
-    void testGetTopInfo() throws Exception{
+    void testGetRhodeIslandOrganization() {
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
-        hiagent.getInfo();
-        String anotherOutput="This is a top agent\r\n";
+        agent3.getOrganization();
+        String anotherOutput="This is an agent from Rhode Island.\r\n";
         assertEquals(anotherOutput, outContent.toString());
     }
 
