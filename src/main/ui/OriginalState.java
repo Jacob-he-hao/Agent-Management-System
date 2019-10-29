@@ -49,7 +49,7 @@ public class OriginalState {
                 break;
 
             case "Print":
-                op.printTheMap();
+                Operation.printTheMap();
                 break;
 
             default:
