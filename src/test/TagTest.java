@@ -26,6 +26,7 @@ public class TagTest {
         tl = new Taglist();
         agent = new RhineLifeAgent("k", "Guard", 4);
         al = new Agentlist();
+
     }
 
 
