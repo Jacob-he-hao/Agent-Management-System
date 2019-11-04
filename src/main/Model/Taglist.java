@@ -16,7 +16,7 @@ public class Taglist implements List<Tag> {
     }
 
     // MODIFIES: this
-    // EFFECTS: Agent i is added to the Agent list
+    // EFFECTS: Tag is added to the tag list
     public void add(Tag tag) {
         list.add(tag);
     }
@@ -72,7 +72,7 @@ public class Taglist implements List<Tag> {
 
 
     //MODIFIES: this
-    //EFFECTS: return the agent with given name in the given list
+    //EFFECTS: return the tag with given name in the given list
     public  Tag getTag(String name) {
         for (Tag t : list) {
             if (t.getName().equals(name)) {
