@@ -42,29 +42,6 @@ public class TagTest {
         assertEquals("support", tag1.getName());
     }
 
-    @Test
-    void GetAgentList(){
-        Agentlist al = tag1.getAgentList();
-        assertEquals(1,tag1.getAgentList().size());
-        assertTrue(tag1.getAgentList().contains(agent));
-        assertFalse(tag1.getAgentList().contains(agent1));
-        al.add(agent1);
-        assertEquals(2,tag1.getAgentList().size());
-        assertTrue(tag1.getAgentList().contains(agent));
-        assertTrue(tag1.getAgentList().contains(agent1));
-    }
 
-    @Test
-    void addAndRemoveTagTest() {
-        assertFalse(tag1.getAgentList().contains(agent));
-        tag1.addAgent(agent);
-        assertTrue(tag1.getAgentList().contains(agent));
-        tag1.addAgent(agent);
-        assertTrue(tag1.getAgentList().contains(agent));
-        tag1.removeAgent(agent);
-        assertFalse(tag1.getAgentList().contains(agent));
-        tag1.removeAgent(agent);
-        assertFalse(tag1.getAgentList().contains(agent));
-    }
 
 }

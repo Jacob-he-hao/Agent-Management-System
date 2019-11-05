@@ -9,7 +9,6 @@ import java.util.Arrays;
 
 // Represents a list of agents
 public class Agentlist implements List<Agent> {
-    private Agent agent;
     private ArrayList<Agent> list;
 
     public Agentlist() {
