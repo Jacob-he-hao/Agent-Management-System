@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -17,7 +18,7 @@ public class AgentTest {
     private Agent agent1;
     private Agent agent3;
     private Tag tag;
-    private Taglist tl;
+    private Tag tag1;
     private Agentlist al;
     @BeforeEach
     void runBefore() {
@@ -27,8 +28,19 @@ public class AgentTest {
         agent3 = new RhodeIslandAgent("j", "Vanguard", 6);
         al = new Agentlist();
         tag = new Tag("support", al);
-        tl = new Taglist();
+        tag1 = new Tag("medic", al);
         agent1.addTag(tag);
+    }
+
+
+    @Test
+    void equals() {
+        Agent a1 = new RhodeIslandAgent("k","Guard",3);
+       assertTrue(agent.equals(agent));
+       assertFalse(agent.equals(null));
+       assertFalse(agent.equals(agent1));
+       assertFalse(agent.equals(a1));
+
     }
 
 
@@ -51,6 +63,19 @@ public class AgentTest {
         assertEquals( 5, agent1.getStar());
         assertEquals( 3, agent2.getStar());
         assertEquals(6, agent3.getStar());
+    }
+
+    @Test
+    void GetTagList(){
+        Taglist tl = agent.getTagList();
+        tl.add(tag);
+        assertEquals(1,agent.getTagList().size());
+        assertTrue(agent.getTagList().contains(tag));
+        assertFalse(agent.getTagList().contains(tag1));
+        tl.add(tag1);
+        assertEquals(2,agent.getTagList().size());
+        assertTrue(agent.getTagList().contains(tag1));
+        assertTrue(agent.getTagList().contains(tag));
     }
 
     @Test

@@ -3,8 +3,10 @@ import model.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -32,7 +34,7 @@ public class TaglistTest {
             set1.add(i2);
             list1 = new Taglist();
             list2 = new Taglist();
-            tag1 = new Tag("suspport", set);
+            tag1 = new Tag("Support", set);
             tag2 = new Tag("medic", set1);
 
 
@@ -48,6 +50,16 @@ public class TaglistTest {
             List<String> lines = Files.readAllLines(Paths.get("data/testTagSave.txt"));
             assertEquals("medic" , lines.get(0));
         }
+
+        @Test
+        void testLoad() throws IOException, ImpossibleAgentException {
+        File file = new File("data/testLoad.txt");
+        List<String> lines = new ArrayList<>();
+        lines.add("output -> Lapland-Guard-6");
+        Files.write(file.toPath(), lines);
+        list1.load(file);
+        assertEquals ("output", list1.get(0).getName());
+    }
 
 
         @Test
@@ -111,7 +123,17 @@ public class TaglistTest {
             assertFalse(list1.contains(tag1));
             assertFalse(list1.contains(tag2));
             assertEquals(0, list1.size());
-
         }
+
+        @Test
+        void testGetTag() {
+            list1.add(tag1);
+            list1.add(tag2);
+            assertEquals("Support", list1.getTag("Support").getName());
+            assertEquals(tag2, list1.getTag("medic"));
+        }
+
+
+
     }
 

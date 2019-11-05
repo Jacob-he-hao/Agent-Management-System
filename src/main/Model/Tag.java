@@ -13,24 +13,6 @@ public class Tag {
         this.agentlist = agentlist;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Tag tag = (Tag) o;
-        return name.equals(tag.name)
-                && agentlist.equals(tag.agentlist);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(name,agentlist);
-    }
-
 
     public String getName() {
         return name;
@@ -69,9 +51,6 @@ public class Tag {
         }
     }
 
-    public Set<Agent> agentWithTheTag(String tagName) {
-        return tags.get(tagName);
-    }
 
     public void print() {
         for (Map.Entry<String, Set<Agent>> e : tags.entrySet()) {

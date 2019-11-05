@@ -27,25 +27,6 @@ public class Operation  {
         file = new File("data/allAgentList.txt");
     }
 
-    private static void loadData() {
-        Agent agent1 = new RhineLifeAgent("Texas", "Vanguard", 5);
-        Agent agent2 = new RhineLifeAgent("Lapland", "Guard", 6);
-        Agent agent3 = new RhineLifeAgent("BluePoison", "Shooter", 5);
-        Agent agent4 = new RhineLifeAgent("Silence", "Medic", 5);
-        Agent agent5 = new RhineLifeAgent("Bandit", "Vanguard", 3);
-        Agent agent6 = new RhodeIslandAgent("Save", "Guard", 6);
-        Agent agent7 = new RhodeIslandAgent("Pulse", "Vanguard", 4);
-        Agent agent8 = new RhodeIslandAgent("Emiya", "Lava", 5);
-        agentTag.addNewItems("support", agent1);
-        agentTag.addNewItems("output", agent2);
-        agentTag.addNewItems("output", agent3);
-        agentTag.addNewItems("medicine", agent4);
-        agentTag.addNewItems("support", agent5);
-        agentTag.addNewItems("output", agent6);
-        agentTag.addNewItems("support", agent7);
-        agentTag.addNewItems("weaken", agent8);
-    }
-
     //MODIFIES: this
     //EFFECTS: add the agent into recruitment list
 
@@ -82,7 +63,22 @@ public class Operation  {
     }
 
     public static void printTheMap() {
-        loadData();
+        Agent agent1 = new RhineLifeAgent("Texas", "Vanguard", 5);
+        Agent agent2 = new RhineLifeAgent("Lapland", "Guard", 6);
+        Agent agent3 = new RhineLifeAgent("BluePoison", "Shooter", 5);
+        Agent agent4 = new RhineLifeAgent("Silence", "Medic", 5);
+        Agent agent5 = new RhineLifeAgent("Bandit", "Vanguard", 3);
+        Agent agent6 = new RhodeIslandAgent("Save", "Guard", 6);
+        Agent agent7 = new RhodeIslandAgent("Pulse", "Vanguard", 4);
+        Agent agent8 = new RhodeIslandAgent("Emiya", "Lava", 5);
+        agentTag.addNewItems("support", agent1);
+        agentTag.addNewItems("output", agent2);
+        agentTag.addNewItems("output", agent3);
+        agentTag.addNewItems("medicine", agent4);
+        agentTag.addNewItems("support", agent5);
+        agentTag.addNewItems("output", agent6);
+        agentTag.addNewItems("support", agent7);
+        agentTag.addNewItems("weaken", agent8);
         agentTag.print();
     }
 }
