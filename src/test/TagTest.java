@@ -22,15 +22,15 @@ public class TagTest {
 
     @BeforeEach
     void runBefore() {
-        tag1 = new Tag("support", al1);
-        tag2 = new Tag("medic", al2);
+        agent = new RhineLifeAgent("k", "Guard", 4);
+        agent1 = new RhodeIslandAgent("d", "Vanguard", 4);
         al1= new Agentlist();
         al1.add(agent);
         al2= new Agentlist();
         al2.add(agent1);
         tl = new Taglist();
-        agent = new RhineLifeAgent("k", "Guard", 4);
-        agent1 = new RhodeIslandAgent("d", "Vanguard", 4);
+        tag1 = new Tag("support", al1);
+        tag2 = new Tag("medic", al2);
 
 
 
@@ -42,6 +42,31 @@ public class TagTest {
         assertEquals("support", tag1.getName());
     }
 
+
+    @Test
+    void GetAgentList(){
+        Agentlist al = tag1.getAgentList();
+        assertEquals(1,tag1.getAgentList().size());
+        assertTrue(tag1.getAgentList().contains(agent));
+        assertFalse(tag1.getAgentList().contains(agent1));
+        al.add(agent1);
+        assertEquals(2,tag1.getAgentList().size());
+        assertTrue(tag1.getAgentList().contains(agent));
+        assertTrue(tag1.getAgentList().contains(agent1));
+    }
+
+    @Test
+    void addAndRemoveTagTest() {
+        assertTrue(tag1.getAgentList().contains(agent));
+        tag1.addAgent(agent);
+        assertTrue(tag1.getAgentList().contains(agent));
+        tag1.addAgent(agent);
+        assertTrue(tag1.getAgentList().contains(agent));
+        tag1.removeAgent(agent);
+        assertFalse(tag1.getAgentList().contains(agent));
+        tag1.removeAgent(agent);
+        assertFalse(tag1.getAgentList().contains(agent));
+    }
 
 
 }
