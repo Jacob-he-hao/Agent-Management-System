@@ -23,7 +23,7 @@ public class Operation  {
         this.recruitedAgents = recruitedAgents;
         this.rhineLifeAgents = rhineLifeAgents;
         this.rhodeIslandAgent = rhodeIslandAgent;
-        agentTag = new Tag("",null);
+        agentTag = new Tag("");
         file = new File("data/allAgentList.txt");
     }
 

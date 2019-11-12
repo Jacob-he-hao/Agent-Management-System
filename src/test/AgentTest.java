@@ -27,8 +27,8 @@ public class AgentTest {
         agent2 = new RhodeIslandAgent("w", "Guard", 3);
         agent3 = new RhodeIslandAgent("j", "Vanguard", 6);
         al = new Agentlist();
-        tag = new Tag("support", al);
-        tag1 = new Tag("medic", al);
+        tag = new Tag("support");
+        tag1 = new Tag("medic");
         agent1.addTag(tag);
     }
 

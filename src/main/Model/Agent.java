@@ -1,10 +1,13 @@
 package model;
 
+import observer.TagObserver;
+
 import java.util.Objects;
 
 //Represents an agent
-public abstract class Agent {
+public abstract class Agent implements TagObserver {
     private int star;
+    private int numEmployers;
     private String name;
     private String job;
     private Taglist tagList;
@@ -76,6 +79,14 @@ public abstract class Agent {
 
     public String toString() {
         return name + "-" + job + "-" + star;
+    }
+
+    @Override
+    public void update(Employer e) {
+        numEmployers++;
+        System.out.println("There are now " + numEmployers + " employers queueing at the tag.");
+        System.out.println("The employer" + e.getName() + "has picked the tag");
+
     }
 }
 

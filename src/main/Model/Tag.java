@@ -1,16 +1,18 @@
 package model;
 
 import java.util.*;
+import observer.Subject;
 
-public class Tag {
-
-    String name;
-    Agentlist agentlist;
+public class Tag extends Subject {
+    private String name;
+    private ArrayList<Employer> employerList;
+    private Agentlist agentlist;
     private Map<String, Set<Agent>> tags = new HashMap<>();
 
-    public Tag(String name, Agentlist agentlist) {
+    public Tag(String name) {
         this.name = name;
-        this.agentlist = agentlist;
+        this.agentlist = new Agentlist();
+        this.employerList = new ArrayList<>();
     }
 
 
@@ -26,6 +28,7 @@ public class Tag {
         if (!agentlist.contains(agent)) {
             agentlist.add(agent);
             agent.addTag(this);
+            addObserver(agent);
         }
     }
 
@@ -33,7 +36,17 @@ public class Tag {
         if (agentlist.contains(agent)) {
             agentlist.remove(agent);
             agent.removeTag(this);
+            removeObserver(agent);
         }
+    }
+
+    public ArrayList<Employer> getEmployerList() {
+        return employerList;
+    }
+
+    public void addEmployer(Employer e) {
+        employerList.add(e);
+        notifyObservers(e);
     }
 
     public void addNewItems(String tagName, Agent toAdd) {

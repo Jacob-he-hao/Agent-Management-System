@@ -58,7 +58,7 @@ public class Taglist implements List<Tag> {
         PrintWriter writer = new PrintWriter("data/outputfile.txt", "UTF-8");
         for (String line : lines) {
             ArrayList<String> partsOfLine = splitOnSpace(line);
-            list.add(new Tag(partsOfLine.get(0), new Agentlist()));
+            list.add(new Tag(partsOfLine.get(0)));
             writer.println(line);
         }
         writer.close(); //note -- if you miss this, the file will not be written at all.
@@ -79,6 +79,6 @@ public class Taglist implements List<Tag> {
                 return t;
             }
         }
-        return new Tag(name, new Agentlist());
+        return new Tag(name);
     }
 }

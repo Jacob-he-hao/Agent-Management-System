@@ -69,20 +69,7 @@ public class OperationTest {
         assertEquals("This is an agent from Rhine Life.\r\n", outContent.toString());
     }
 
-    @Test
-    void testPrintTheMap() {
-        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
-        Operation.printTheMap();
-        assertEquals(outContent.toString(), "output -> Lapland-Guard-6\n"+
-                        "output -> BluePoison-Shooter-5\n"+
-                        "output -> Save-Guard-6\n"+
-                        "medicine -> Silence-Medic-5\n"+
-                "weaken -> Emiya-Lava-5\n"+
-                "support -> Pulse-Vanguard-4\n"+
-                "support -> Texas-Vanguard-5\n"+
-                "support -> Bandit-Vanguard-3\n");
-    }
+
 
 
 }

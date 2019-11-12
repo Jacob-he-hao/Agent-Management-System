@@ -34,8 +34,8 @@ public class TaglistTest {
             set1.add(i2);
             list1 = new Taglist();
             list2 = new Taglist();
-            tag1 = new Tag("Support", set);
-            tag2 = new Tag("medic", set1);
+            tag1 = new Tag("Support");
+            tag2 = new Tag("medic");
 
 
         }
