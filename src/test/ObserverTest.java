@@ -43,7 +43,7 @@ public class ObserverTest {
     }
 
     @Test
-    void TestAddObserver() {
+    void TestObserver() {
         al1 = tag1.getAgentList();
        tag1.addObserver(agent);
         assertFalse(al1.contains(agent));

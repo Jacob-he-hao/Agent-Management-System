@@ -85,7 +85,7 @@ public abstract class Agent implements TagObserver {
     public void update(Employer e) {
         numEmployers++;
         System.out.println("There are now " + numEmployers + " employers queueing at the tag.");
-        System.out.println("The employer" + e.getName() + "has picked the tag");
+        System.out.println("The employer" + " " + e.getName() + " " + "has picked the tag for the agent" + name);
 
     }
 }
