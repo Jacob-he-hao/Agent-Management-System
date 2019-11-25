@@ -1,4 +1,6 @@
 import exception.ImpossibleAgentException;
+import exception.ImpossibleAgentInListException;
+import exception.NoSuchOrganizationException;
 import model.Agentlist;
 import model.Operation;
 import org.junit.jupiter.api.BeforeEach;
@@ -18,6 +20,7 @@ public class OperationTest {
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
 
+
     @BeforeEach
     void runBefore() throws IOException {
         File rhineLife = new File("data/RhineLife.txt");
@@ -33,22 +36,35 @@ public class OperationTest {
 
 
     @Test
-    void addAgentTest() throws IOException {
+    void addAndDropAgentTest() throws IOException {
         assertFalse(list1.contains(list1.getAgent("ha")));
         try {
-            op1.addAgent("ha");
+            op1.addAgent("RhineLife", "ha");
             fail("not thrown yet");
-        } catch (ImpossibleAgentException i) {
+        }catch (NoSuchOrganizationException e) {
+        }
+        catch (ImpossibleAgentException i) {
         }
         assertFalse(list1.contains(list1.getAgent("ha")));
         assertFalse(list1.contains(list1.getAgent("Texas")));
         try {
-            op1.addAgent("Texas");
-        } catch (ImpossibleAgentException i) {
+            op1.addAgent("RhodeIsland", "Texas");
+        } catch (NoSuchOrganizationException e) {
+        }
+        catch (ImpossibleAgentException i) {
             fail("the exception has been thrown");
         }
         assertTrue(list1.contains(list1.getAgent("Texas")));
         assertEquals("The agent has been added to your recruitment list!\r\n", outContent.toString());
+        try {
+            op1.dropAgent( "Texas");
+        } catch (ImpossibleAgentException i) {
+            fail("the exception has been thrown");
+        }
+        assertFalse(list1.contains(list1.getAgent("Texas")));
+        assertEquals(
+                "The agent has been added to your recruitment list!\r\n"
+                        + "The agent has been removed from your recruitment list!\r\n", outContent.toString());
 
     }
 
@@ -66,7 +82,46 @@ public class OperationTest {
             fail("not thrown yet");
         } catch (ImpossibleAgentException e) {
         }
-        assertEquals("This is an agent from Rhine Life.\r\n", outContent.toString());
+        assertEquals("Organization: RhineLife\r\n" +
+                "Agent Name: Texas\r\n" +
+                "Agent Job: Vanguard\r\n" +
+                "Star ranking: 5\r\n", outContent.toString());
+    }
+
+    @Test
+    void SearchAgentInListTest() throws IOException, NoSuchOrganizationException, ImpossibleAgentException {
+        File file2 = new File("data/allAgentList.txt");
+        list1.load(file2);
+        try {
+            op1.searchRecruited("Lapland");
+            fail();
+        } catch (ImpossibleAgentInListException | IOException | ImpossibleAgentException ignored) {
+         }
+        op1.addAgent("RhodeIsland", "Texas");
+        try {
+            op1.searchRecruited("Texas");
+        } catch (ImpossibleAgentException | ImpossibleAgentInListException e) {
+            fail("not thrown yet");
+        }
+        assertEquals(
+                "The agent has been added to your recruitment list!\r\n" + "Organization: RhineLife\r\n" +
+                "Agent Name: Texas\r\n" +
+                "Agent Job: Vanguard\r\n" +
+                "Star ranking: 5\r\n", outContent.toString());
+    }
+
+
+    @Test
+    void PrintTheMapTest() {
+        op1.printTheMap();
+        assertEquals(outContent.toString(),"output -> Lapland-Guard-6\r\n" +
+                "output -> BluePoison-Shooter-5\r\n" +
+                "output -> Save-Guard-6\r\n" +
+                "medicine -> Silence-Medic-5\r\n" +
+                "weaken -> Emiya-Lava-5\r\n" +
+                "support -> Pulse-Vanguard-4\r\n" +
+                "support -> Texas-Vanguard-5\r\n" +
+                "support -> Bandit-Vanguard-3\r\n");
     }
 
 

@@ -1,4 +1,4 @@
 package exception;
 
-public class ImpossibleAgentException extends Exception{
+public class ImpossibleAgentException extends NotGoingOnException{
 }

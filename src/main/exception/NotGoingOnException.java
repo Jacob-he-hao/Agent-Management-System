@@ -1,4 +1,4 @@
 package exception;
 
-public class NotGoingOnException extends RuntimeException {
+public class NotGoingOnException extends Exception {
 }

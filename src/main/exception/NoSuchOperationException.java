@@ -1,4 +1,4 @@
 package exception;
 
-public class NoSuchOperationException extends Exception{
+public class NoSuchOperationException extends NotGoingOnException{
 }

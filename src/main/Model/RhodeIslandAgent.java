@@ -8,7 +8,12 @@ public class RhodeIslandAgent extends Agent {
 
 
     @Override
-    public void getOrganization() {
-        System.out.println("This is an agent from Rhode Island.");
+    public void getInfo() {
+
+        System.out.println("Organization: RhodeIsland");
+        System.out.println("Agent Name: " + getName());
+        System.out.println("Agent Job: " + getJob());
+        System.out.println("Star ranking: " + getStar());
+
     }
 }
