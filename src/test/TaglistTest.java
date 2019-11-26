@@ -3,10 +3,9 @@ import model.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayOutputStream;
+
 import java.io.File;
 import java.io.IOException;
-import java.io.PrintStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -27,7 +26,7 @@ public class TaglistTest {
 
 
         @BeforeEach
-        void runBefore() throws IOException {
+        void runBefore() {
             set = new Agentlist();
             set1 = new Agentlist();
             set.add(i1);
@@ -52,7 +51,7 @@ public class TaglistTest {
         }
 
         @Test
-        void testLoad() throws IOException, ImpossibleAgentException {
+        void testLoad() throws IOException {
         File file = new File("data/testLoad.txt");
         List<String> lines = new ArrayList<>();
         lines.add("output -> Lapland-Guard-6");

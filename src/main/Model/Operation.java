@@ -19,7 +19,7 @@ public class Operation extends Observable {
     private File file;
     private static Tag agentTag;
 
-    public Operation(Agentlist recruitedAgents, Agentlist rhineLifeAgents, Agentlist rhodeIslandAgent) throws IOException {
+    public Operation(Agentlist recruitedAgents, Agentlist rhineLifeAgents, Agentlist rhodeIslandAgent) {
         this.recruitedAgents = recruitedAgents;
         this.rhineLifeAgents = rhineLifeAgents;
         this.rhodeIslandAgent = rhodeIslandAgent;
@@ -79,7 +79,7 @@ public class Operation extends Observable {
     }
 
     //EFFECTS: return the organization that is asked
-    public Agentlist getOrganization(String faculty) throws NoSuchOrganizationException {
+    private Agentlist getOrganization(String faculty) throws NoSuchOrganizationException {
         switch (faculty) {
             default:
                 throw new NoSuchOrganizationException();

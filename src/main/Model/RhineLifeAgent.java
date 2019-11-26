@@ -15,7 +15,7 @@ public class RhineLifeAgent extends Agent {
     public void getInfo() {
         InfoBox.infoBox("Organization: RhineLife\n "
                 + "Agent Name: " + getName() + "\n"
-                + "Agent Job: " + getJob()+ "\n"
+                + "Agent Job: " + getJob() + "\n"
                 + "Star ranking: " + getStar());
     }
 }

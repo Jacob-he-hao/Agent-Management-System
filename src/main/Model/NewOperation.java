@@ -12,7 +12,7 @@ public class NewOperation {
     private Agentlist rhodeIslandAgent;
     private File file;
 
-    public NewOperation(Agentlist recruitedAgents, Agentlist rhineLifeAgents, Agentlist rhodeIslandAgent) throws IOException {
+    public NewOperation(Agentlist recruitedAgents, Agentlist rhineLifeAgents, Agentlist rhodeIslandAgent) {
         this.recruitedAgents = recruitedAgents;
         this.rhineLifeAgents = rhineLifeAgents;
         this.rhodeIslandAgent = rhodeIslandAgent;
@@ -25,10 +25,10 @@ public class NewOperation {
     //MODIFIES: this
     //EFFECTS: add the agent into recruitment list
     public void addAgent(String organization, String name) throws IOException, ImpossibleAgentException {
-        if ( organization.equals("RhineLife") && rhineLifeAgents.contains(rhineLifeAgents.getAgent(name))) {
+        if (organization.equals("RhineLife") && rhineLifeAgents.contains(rhineLifeAgents.getAgent(name))) {
             recruitedAgents.add(rhineLifeAgents.getAgent(name));
             recruitedAgents.save(file);
-        } else if ( organization.equals("RhodeIsland") && rhodeIslandAgent.contains(rhodeIslandAgent.getAgent(name))) {
+        } else if (organization.equals("RhodeIsland") && rhodeIslandAgent.contains(rhodeIslandAgent.getAgent(name))) {
             recruitedAgents.add(rhodeIslandAgent.getAgent(name));
             recruitedAgents.save(file);
         } else {
@@ -55,7 +55,8 @@ public class NewOperation {
 
     //MODIFIES: this
     //EFFECTS: return the information of the agent searched
-    public void searchRecruited(String name) throws ImpossibleAgentInListException, ImpossibleAgentException, IOException {
+    public void searchRecruited(String name)
+            throws ImpossibleAgentInListException, ImpossibleAgentException, IOException {
         recruitedAgents.load(file);
         if (recruitedAgents.contains(recruitedAgents.getAgent(name))) {
             searchAgent(name);

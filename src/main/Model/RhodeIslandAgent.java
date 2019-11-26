@@ -11,7 +11,7 @@ public class RhodeIslandAgent extends Agent {
     public void getInfo() {
         InfoBox.infoBox("Organization: RhodeIsland\n "
                 + "Agent Name: " + getName() + "\n"
-                + "Agent Job: " + getJob()+ "\n"
+                + "Agent Job: " + getJob() + "\n"
                 + "Star ranking: " + getStar());
 
     }
