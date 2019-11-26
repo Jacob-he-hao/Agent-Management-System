@@ -116,7 +116,7 @@ public class StudentOperationUi {
 
     //MODIFIES:this
     //EFFECTS:Add the button1 to the panel
-    public void setButton1 () {
+    public void setButton1() {
         Button button = new Button("Add Agent");
         button.setBounds(10, 31, 90, 23);
         panel1.add(button);
@@ -207,8 +207,8 @@ public class StudentOperationUi {
 
     //EFFECTS: Go to the add ui-panel
     public void moveOn() throws IOException {
-        AddUi index=new AddUi();
-        JFrame frame1=index.getFrame();
+        AddUi index = new AddUi();
+        JFrame frame1 = index.getFrame();
         frame1.setVisible(true);
     }
 
@@ -216,29 +216,29 @@ public class StudentOperationUi {
 
     //EFFECTS: Go to the search ui-panel
     public void moveOn2() throws IOException {
-        SearchUi index=new SearchUi();
-        JFrame frame3=index.getFrame();
+        SearchUi index = new SearchUi();
+        JFrame frame3 = index.getFrame();
         frame3.setVisible(true);
     }
 
     //EFFECTS: Go to the search-recruited ui-panel
     public void moveOn3() throws IOException {
-        SearchRecruitedUi index=new SearchRecruitedUi();
-        JFrame frame4=index.getFrame();
+        SearchRecruitedUi index = new SearchRecruitedUi();
+        JFrame frame4 = index.getFrame();
         frame4.setVisible(true);
     }
 
     //EFFECTS: Go to the print ui-panel
     public void moveOn4() {
-        PrintUi index=new PrintUi();
-        JFrame frame5=index.getFrame();
+        PrintUi index = new PrintUi();
+        JFrame frame5 = index.getFrame();
         frame5.setVisible(true);
     }
 
     //EFFECTS: Go to the quit ui-panel
     public void moveOn5() {
-        QuitUi index=new QuitUi();
-        JFrame frame6=index.getFrame();
+        QuitUi index = new QuitUi();
+        JFrame frame6 = index.getFrame();
         frame6.setVisible(true);
     }
 
