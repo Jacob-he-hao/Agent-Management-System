@@ -9,9 +9,10 @@ public class MainUi {
     private JFrame frame;
     private JTextField textField;
     private JTextField textField1;
+    private String user;
+    private String password;
 
-    //Launch the login panel
-
+    //EFFECT: Launch the login panel
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -30,7 +31,7 @@ public class MainUi {
         initialize();
     }
 
-
+    //EFFECT: Construct initialize state for the panel
     private void initialize() {
         frame = new JFrame();
         frame.setTitle("Agent Calculator!");
@@ -43,15 +44,18 @@ public class MainUi {
 
     }
 
-    private void setTitle() {
+    //MODIFIES: this
+    //EFFECTS: Construct title for the main panel
+    public void setTitle() {
         JLabel lblNewLabel = new JLabel("What's your name and ID?");
         lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 16));
         lblNewLabel.setBounds(111, 17, 287, 15);
         frame.getContentPane().add(lblNewLabel);
     }
 
-
-    private void setLabel() {
+    //MODIFIES: this
+    //EFFECTS: Construct labels on the main panel
+    public void setLabel() {
         JLabel label1 = new JLabel("Name");
         label1.setFont(new Font("Times New Roman", Font.PLAIN, 14));
         label1.setBounds(87, 67, 67, 15);
@@ -71,24 +75,37 @@ public class MainUi {
         frame.getContentPane().add(textField1);
     }
 
-    private void setButton() {
+    //MODIFIES: this
+    //EFFECTS: Construct button
+    public void setButton() {
         Button button = new Button("OK");
         button.setBounds(87, 194, 76, 23);
         button.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                String user = textField.getText();
-                String password = textField1.getText();
+                 user = textField.getText();
+                 password = textField1.getText();
                 if (user.equals("") || user == null || password.equals("") || password == null) {
-                    JOptionPane.showMessageDialog(frame, user + " " + ":Hi, the Name can't be blank！");
+                    JOptionPane.showMessageDialog(frame, user + " " + ":Hi, the Name or ID can't be blank！");
                     return;
                 } else {
-                    frame.dispose();
                     JOptionPane.showMessageDialog(frame, "Login Successful!");
+                    frame.dispose();
+                    moveOn();
+
                 }
             }
         });
         frame.getContentPane().add(button);
     }
+
+    //EFFECT: Go to the operation ui-panel
+     public void moveOn() {
+        StudentInfo stu = new StudentInfo(user, password);
+        StudentOperationUi index=new StudentOperationUi(stu);
+        JFrame frame2=index.getFrame();
+        frame2.setVisible(true);
+    }
+
 }
 

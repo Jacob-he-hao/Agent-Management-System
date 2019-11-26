@@ -2,7 +2,7 @@ import exception.ImpossibleAgentException;
 import exception.ImpossibleAgentInListException;
 import exception.NoSuchOrganizationException;
 import model.Agentlist;
-import model.Operation;
+import model.NewOperation;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -12,10 +12,11 @@ import java.io.IOException;
 import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.fail;
 
+public class NewOperationTest {
 
-public class OperationTest {
-    private Operation op1;
+    private NewOperation op1;
     private Agentlist list1;
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
@@ -30,32 +31,33 @@ public class OperationTest {
         list1 = new Agentlist();
         rhineLifeAgents.load(rhineLife);
         rhodeIslandAgent.load(rhodeIsland);
-        op1 = new Operation(list1, rhineLifeAgents, rhodeIslandAgent);
+        op1 = new NewOperation(list1, rhineLifeAgents, rhodeIslandAgent);
         System.setOut(new PrintStream(outContent));
     }
 
 
     @Test
-    void addAndDropAgentTest() throws IOException {
+    void addAgentTest() throws IOException {
         assertFalse(list1.contains(list1.getAgent("ha")));
         try {
             op1.addAgent("RhineLife", "ha");
             fail("not thrown yet");
-        }catch (NoSuchOrganizationException e) {
-        }
-        catch (ImpossibleAgentException i) {
+        } catch (ImpossibleAgentException i) {
         }
         assertFalse(list1.contains(list1.getAgent("ha")));
         assertFalse(list1.contains(list1.getAgent("Texas")));
         try {
             op1.addAgent("RhodeIsland", "Texas");
-        } catch (NoSuchOrganizationException e) {
+            fail("not thrown yet");
+        } catch (ImpossibleAgentException i) {
         }
-        catch (ImpossibleAgentException i) {
-            fail("the exception has been thrown");
+        assertFalse(list1.contains(list1.getAgent("Texas")));
+        try {
+            op1.addAgent("RhineLife", "Texas");
+        } catch (ImpossibleAgentException i) {
+            fail("have been thrown");
         }
         assertTrue(list1.contains(list1.getAgent("Texas")));
-        assertEquals("The agent has been added to your recruitment list!\r\n", outContent.toString());
 
     }
 
@@ -76,26 +78,21 @@ public class OperationTest {
     }
 
     @Test
-    void SearchAgentInListTest() throws IOException, NoSuchOrganizationException, ImpossibleAgentException {
-        File file2 = new File("data/allAgentList.txt");
+    void SearchAgentInListTest() throws IOException, ImpossibleAgentException {
+        File file2 = new File("data/recruitedAgent.txt");
         list1.load(file2);
         try {
             op1.searchRecruited("Lapland");
             fail();
-        } catch (ImpossibleAgentInListException  | ImpossibleAgentException ignored) {
-         }
-        op1.addAgent("RhodeIsland", "Texas");
+        } catch (ImpossibleAgentInListException | ImpossibleAgentException ignored) {
+        }
+        op1.addAgent("RhineLife", "Texas");
         try {
             op1.searchRecruited("Texas");
         } catch (ImpossibleAgentException | ImpossibleAgentInListException e) {
             fail("not thrown yet");
         }
     }
-
-
-
-
-
 
 }
 

@@ -31,6 +31,7 @@ public class Agentlist implements List<Agent> {
     // EFFECTS: Agent i is removed from the Agentlist
     public void remove(Agent i) {
         list.remove(i);
+
     }
 
     // EFFECTS: Returns true if Integer i is in the IntegerSet
@@ -57,7 +58,7 @@ public class Agentlist implements List<Agent> {
 
 
     //MODIFIES: this
-    //EFFECTS: load the data
+    //EFFECTS: load the data of the file
     public void load(File file) throws IOException {
         java.util.List<String> lines = Files.readAllLines(file.toPath());
         PrintWriter writer = new PrintWriter("data/outputfile.txt", "UTF-8");

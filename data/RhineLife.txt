@@ -3,3 +3,5 @@ Lapland Guard 6
 BluePoison Shooter 5
 Silence Medic 5
 Bandit Vanguard 3
+Hibiscus Medic 4
+Vigna Specialist 3

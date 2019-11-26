@@ -78,30 +78,6 @@ public class AgentTest {
         assertTrue(agent.getTagList().contains(tag));
     }
 
-    @Test
-    void testGetRhineLifeOrganization()  {
-        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
-        agent1.getInfo();
-        String expectedOutput="Organization: RhineLife\r\n" +
-                "Agent Name: h\r\n" +
-                "Agent Job: Vanguard\r\n" +
-                "Star ranking: 5\r\n";
-        assertEquals(expectedOutput, outContent.toString());
-    }
-
-    @Test
-    void testGetRhodeIslandOrganization() {
-        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
-        agent3.getInfo();
-        String anotherOutput="Organization: RhodeIsland\r\n" +
-                "Agent Name: j\r\n" +
-                "Agent Job: Vanguard\r\n" +
-                "Star ranking: 6\r\n";
-        assertEquals(anotherOutput, outContent.toString());
-    }
-
 
     @Test
     void addAndRemoveTagTest() {

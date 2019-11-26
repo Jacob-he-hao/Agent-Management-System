@@ -51,19 +51,6 @@ public class OriginalState extends Observable {
                 }
                 break;
 
-
-            case "drop":
-                observer.update(op, null);
-                System.out.print("Please enter the name of the agent you want to drop: ");
-                agentName = scanner.nextLine();
-                try {
-                    op.dropAgent(agentName);
-                } catch (ImpossibleAgentException e) {
-                    System.out.println("You have not added this agent!");
-                }
-                break;
-
-
             case "Search":
                 System.out.print("Please enter the name of the agent you want to search: ");
                 String name1 = scanner.nextLine();
@@ -85,13 +72,6 @@ public class OriginalState extends Observable {
                     System.out.println("This agent is not available in your recruitment list");
                 }
                 break;
-
-            case "Print Tag Map":
-                System.out.println("Your name is" + " " + name);
-                Operation.printTheMap();
-                break;
-
-
 
             default:
                 throw new NoSuchOperationException();

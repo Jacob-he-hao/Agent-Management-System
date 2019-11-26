@@ -14,14 +14,14 @@ public class Calculator {
 
 
     //Effects: construct a calculator with an empty scanner
-    private Calculator() throws IOException, NoSuchOperationException {
+    private Calculator() throws IOException {
         Counter counter = new Counter();
         scanner = new Scanner(System.in);
         System.out.println("Welcome to Agent Calculator!");
         System.out.println("What is your name?");
         String name = scanner.nextLine();
         System.out.println("What would you like to do? "
-                + "(Add/Drop/Search/Search Recruited/Print Tag Map for agents or Over)");
+                + "(Add/Search/Search Recruited for agents or Over)");
         while (true) {
             String operation;
             operation = scanner.nextLine();
