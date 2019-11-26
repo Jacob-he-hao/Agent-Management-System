@@ -1,5 +1,7 @@
 package ui;
 
+import model.StudentInfo;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -11,6 +13,7 @@ public class MainUi {
     private JTextField textField1;
     private String user;
     private String password;
+    private StudentInfo stu1;
 
     //EFFECT: Launch the login panel
     public static void main(String[] args) {
@@ -32,7 +35,7 @@ public class MainUi {
     }
 
     //EFFECT: Construct initialize state for the panel
-    private void initialize() {
+    public void initialize() {
         frame = new JFrame();
         frame.setTitle("Agent Calculator!");
         frame.setBounds(400, 250, 450, 300);
@@ -83,10 +86,10 @@ public class MainUi {
         button.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                 user = textField.getText();
-                 password = textField1.getText();
-                if (user.equals("") || user == null || password.equals("") || password == null) {
-                    JOptionPane.showMessageDialog(frame, user + " " + ":Hi, the Name or ID can't be blank！");
+                user = textField.getText();
+                password = textField1.getText();
+                if (user.equals("") || user == null || password.equals("") || password == null || !validate(password)) {
+                    JOptionPane.showMessageDialog(frame, "Hi, the Name or ID can't be valid！");
                     return;
                 } else {
                     JOptionPane.showMessageDialog(frame, "Login Successful!");
@@ -99,11 +102,17 @@ public class MainUi {
         frame.getContentPane().add(button);
     }
 
+    //EFFECTS: test whether the password is valid
+    public boolean validate(String id) {
+        return (id.equals("w5s2b"));
+    }
+
+
     //EFFECT: Go to the operation ui-panel
-     public void moveOn() {
+    public void moveOn() {
         StudentInfo stu = new StudentInfo(user, password);
-        StudentOperationUi index=new StudentOperationUi(stu);
-        JFrame frame2=index.getFrame();
+        StudentOperationUi index = new StudentOperationUi(stu);
+        JFrame frame2 = index.getFrame();
         frame2.setVisible(true);
     }
 

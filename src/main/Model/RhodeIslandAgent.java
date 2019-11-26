@@ -6,7 +6,7 @@ public class RhodeIslandAgent extends Agent {
         super(name, job, star);
     }
 
-
+    //EFFECTS: get the information of RhineLife Agent
     @Override
     public void getInfo() {
         InfoBox.infoBox("Organization: RhodeIsland\n "

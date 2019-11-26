@@ -64,7 +64,7 @@ public class AddUi {
     }
 
     //MODIFIES: this
-    //EFFECTS: Construct labels on the main panel
+    //EFFECTS: Construct labels on the add panel
     private void setLabel() {
         JLabel label1 = new JLabel("Name");
         label1.setFont(new Font("Times New Roman", Font.PLAIN, 14));
@@ -81,6 +81,8 @@ public class AddUi {
         frame.getContentPane().add(label);
     }
 
+    //MODIFIES: this
+    //EFFECTS: Construct choices box on the add panel
     public void setChoice() {
         choice = new Choice();
         choice.setBounds(200, 103, 141, 21);
@@ -91,7 +93,7 @@ public class AddUi {
     }
 
     //MODIFIES: this
-    //EFFECTS: Construct button
+    //EFFECTS: Construct button on the panel
     public void setButton() {
         Button button = new Button("OK");
         button.setBounds(87, 194, 76, 23);

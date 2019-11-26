@@ -6,13 +6,9 @@ import exception.NoSuchOrganizationException;
 
 
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.*;
-import java.util.List;
+
 
 // Represents a list of agents
 public class Operation extends Observable {

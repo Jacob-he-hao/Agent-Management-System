@@ -11,6 +11,7 @@ import java.io.IOException;
 public class NextOnUi {
 
     private JFrame frame;
+
     public NextOnUi() {
 
     }
@@ -47,7 +48,7 @@ public class NextOnUi {
 
     //MODIFIES:this
     //EFFECTS:Add the button1 to the panel
-    public void setButton1 () {
+    public void setButton1() {
         Button button = new Button("Add Agent");
         button.setBounds(10, 81, 90, 23);
         frame.getContentPane().add(button);
@@ -114,11 +115,7 @@ public class NextOnUi {
             @Override
             public void mouseClicked(MouseEvent e) {
                 frame.dispose();
-                try {
-                    moveOn4();
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }
+                moveOn4();
             }
         });
     }
@@ -133,11 +130,7 @@ public class NextOnUi {
             @Override
             public void mouseClicked(MouseEvent e) {
                 frame.dispose();
-                try {
-                    moveOn5();
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }
+                moveOn5();
             }
         });
     }
@@ -145,36 +138,36 @@ public class NextOnUi {
 
     //EFFECTS: Go to the add ui-panel
     public void moveOn() throws IOException {
-        AddUi index=new AddUi();
-        JFrame frame1=index.getFrame();
+        AddUi index = new AddUi();
+        JFrame frame1 = index.getFrame();
         frame1.setVisible(true);
     }
 
     //EFFECTS: Go to the search ui-panel
-    public void moveOn2() throws IOException{
-        SearchUi index=new SearchUi();
-        JFrame frame3=index.getFrame();
+    public void moveOn2() throws IOException {
+        SearchUi index = new SearchUi();
+        JFrame frame3 = index.getFrame();
         frame3.setVisible(true);
     }
 
     //EFFECTS: Go to the search-recruited ui-panel
-    public void moveOn3() throws IOException{
-        SearchRecruitedUi index=new SearchRecruitedUi();
-        JFrame frame4=index.getFrame();
+    public void moveOn3() throws IOException {
+        SearchRecruitedUi index = new SearchRecruitedUi();
+        JFrame frame4 = index.getFrame();
         frame4.setVisible(true);
     }
 
     //EFFECTS: Go to the print ui-panel
-    public void moveOn4() throws IOException{
-        PrintUi index=new PrintUi();
-        JFrame frame5=index.getFrame();
+    public void moveOn4() {
+        PrintUi index = new PrintUi();
+        JFrame frame5 = index.getFrame();
         frame5.setVisible(true);
     }
 
     //EFFECTS: Go to the quit ui-panel
-    public void moveOn5() throws IOException{
-        QuitUi index=new QuitUi();
-        JFrame frame6=index.getFrame();
+    public void moveOn5() {
+        QuitUi index = new QuitUi();
+        JFrame frame6 = index.getFrame();
         frame6.setVisible(true);
     }
 

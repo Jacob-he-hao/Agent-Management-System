@@ -10,9 +10,13 @@ import java.awt.event.MouseEvent;
 
 public class PrintUi {
     private JFrame frame;
-    private ImagePanel panel;
+    private ImageIcon image1;
+    private JLabel label1;
 
     public PrintUi() {
+
+        image1 =  new ImageIcon("data/image1.png");
+        label1 = new JLabel(image1);
 
     }
 
@@ -26,28 +30,19 @@ public class PrintUi {
     public void initialize() {
         frame = new JFrame();
         frame.setTitle("Print Map Panel");
-        frame.setBounds(300, 150, 800, 800);
+        frame.setBounds(300, 150, 1200, 1200);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.getContentPane().setLayout(null);
-        setImagePanel();
+        frame.getContentPane().setLayout(new FlowLayout());
+        frame.getContentPane().add(label1);
         setButton();
     }
-
-    //MODIFIES:this
-    //EFFECTS: put the tag map on the panel
-    public void setImagePanel() {
-        panel = new ImagePanel(new ImageIcon("data/image1.png").getImage());
-        frame.getContentPane().add(panel);
-        frame.pack();
-        frame.setExtendedState( Frame.MAXIMIZED_BOTH );
-        }
 
 
     //MODIFIES: this
     //EFFECTS: Construct button
     public void setButton() {
         Button button = new Button("OK");
-        button.setBounds(740, 900, 76, 23);
+        button.setBounds(890, 1100, 120, 30);
         button.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -55,7 +50,7 @@ public class PrintUi {
 
             }
         });
-        panel.add(button);
+        frame.getContentPane().add(button);
     }
 
     //EFFECTS: Go to the next-on ui panel
@@ -66,6 +61,5 @@ public class PrintUi {
         frame1.setVisible(true);
 
     }
-
-    }
+}
 

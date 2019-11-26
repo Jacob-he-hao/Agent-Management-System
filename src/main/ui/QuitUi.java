@@ -37,8 +37,8 @@ public class QuitUi  {
     //EFFECTS: Construct title for the quit panel
     private void setTitle() {
         JLabel lblNewLabel = new JLabel("Thank you!");
-        lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-        lblNewLabel.setBounds(111, 17, 287, 15);
+        lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 30));
+        lblNewLabel.setBounds(150, 80, 287, 40);
         frame.getContentPane().add(lblNewLabel);
     }
 

@@ -76,7 +76,7 @@ public class SearchUi {
 
 
     //MODIFIES: this
-    //EFFECTS: Construct button
+    //EFFECTS: Construct button on the panel
     public void setButton() {
         Button button = new Button("OK");
         button.setBounds(87, 194, 76, 23);

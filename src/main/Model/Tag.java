@@ -22,6 +22,8 @@ public class Tag  {
         return agentlist;
     }
 
+    //MODIFIES: this
+    //EFFECTS: add an agent to this tag's agent list
     public void addAgent(Agent agent) {
         if (!agentlist.contains(agent)) {
             agentlist.add(agent);
@@ -29,39 +31,14 @@ public class Tag  {
         }
     }
 
+
+    //MODIFIES: this
+    //EFFECTS: remove an agent from this tag's agent list
     public void removeAgent(Agent agent) {
         if (agentlist.contains(agent)) {
             agentlist.remove(agent);
             agent.removeTag(this);
         }
     }
-
-
-
-    public void addNewItems(String tagName, Agent toAdd) {
-        Set<Agent> agentHashSet = new HashSet<Agent>();
-        if (!tags.containsKey(tagName)) {
-            // Need to create a set of agents for the value
-            // of the key in the map
-            agentHashSet.add(toAdd);
-            tags.put(tagName, agentHashSet);
-        } else {
-            // The course has recommendations for it,
-            // add to the set.
-            agentHashSet = tags.get(tagName);
-            agentHashSet.add(toAdd);
-        }
-    }
-
-
-    public void print() {
-        for (Map.Entry<String, Set<Agent>> e : tags.entrySet()) {
-            Set<Agent> agentHaveTheTag = e.getValue();
-            for (Agent a : agentHaveTheTag) {
-                System.out.println(e.getKey() + " -> " + a);
-            }
-        }
-    }
-
 
 }

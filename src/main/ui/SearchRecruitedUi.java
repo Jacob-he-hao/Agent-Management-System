@@ -81,6 +81,12 @@ public class SearchRecruitedUi {
     public void setButton() {
         Button button = new Button("OK");
         button.setBounds(87, 194, 76, 23);
+        makeButtonWork(button);
+    }
+
+    //MODIFIES: this
+    //EFFECTS: Add the mouse function on the button
+    public void makeButtonWork(Button button) {
         button.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {

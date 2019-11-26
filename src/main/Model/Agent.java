@@ -61,6 +61,8 @@ public abstract class Agent  {
     public abstract void getInfo();
 
 
+    //MODIFIES: this
+    //EFFECTS: add a tag to this agent
     public void addTag(Tag tag) {
         if (!tagList.contains(tag)) {
             tagList.add(tag);
@@ -68,6 +70,8 @@ public abstract class Agent  {
         }
     }
 
+    //MODIFIES: this
+    //EFFECTS: remove a tag from this agent
     public void removeTag(Tag tag) {
         if (tagList.contains(tag)) {
             tagList.remove(tag);
