@@ -68,10 +68,10 @@ public class Operation extends Observable {
     public void searchAgent(String name) throws ImpossibleAgentException {
         if (rhineLifeAgents.contains(rhineLifeAgents.getAgent(name))) {
             Agent a = rhineLifeAgents.getAgent(name);
-            a.getInfo();
+            a.getInfoOne();
         } else if (rhodeIslandAgent.contains(rhodeIslandAgent.getAgent(name))) {
             Agent a1 = rhodeIslandAgent.getAgent(name);
-            a1.getInfo();
+            a1.getInfoOne();
         } else {
             throw new ImpossibleAgentException();
         }
